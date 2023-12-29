@@ -1,0 +1,9 @@
+export { default as Main } from './Main/Main';
+export { default as Match } from './Match/Match';
+export { default as Login } from './Login/Login';
+export { default as Rank } from './Rank/Rank';
+export { default as Community } from './Community/Community/Community';
+export { default as Notice } from './Community/Notice/Notice';
+export { default as Qa } from './Community/Qa/Qa';
+export { default as Ootd } from './Community/Ootd/Ootd';
+export { default as Suggest } from './Community/Suggest/Suggest';
