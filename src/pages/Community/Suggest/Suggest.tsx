@@ -1,7 +1,7 @@
 import * as S from './Suggest.styled';
 
 const Suggest = () => {
-  return <div></div>;
+  return <S.Container></S.Container>;
 };
 
 export default Suggest;

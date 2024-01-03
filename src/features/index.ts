@@ -1,4 +1,3 @@
-export { default as Header } from './ui/header/Header';
 export { default as BottomAppBar } from './ui/AppBar/BottomAppBar/BottomAppBar';
 export { default as TopAppBar } from './ui/AppBar/TopAppBar/TopAppBar';
 export { default as BasicLayout } from './ui/Layout/BasicLayout/BasicLayout';

@@ -1,7 +1,7 @@
 import * as S from './Qa.styled';
 
 const Qa = () => {
-  return <div></div>;
+  return <S.Container></S.Container>;
 };
 
 export default Qa;
