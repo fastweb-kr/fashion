@@ -29,7 +29,17 @@ const BottomAppBar = () => {
 
   const [isLoginPage, setIsLoginPage] = useState(false);
 
+  const checkLoginPage = () => {
+    if (path === 'login') {
+      setIsLoginPage(true);
+    } else {
+      setIsLoginPage(false);
+    }
+  };
+
   useEffect(() => {
+    checkLoginPage();
+
     switch (path) {
       case '/login':
         setIsLoginPage(true);
