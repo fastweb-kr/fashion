@@ -26,7 +26,7 @@ jobs:
     - name: 🔨 Build Project 
       run: |
         yarn install
-        vite build
+        yarn build
     
     - name: List output files
       run: find build/ -print
