@@ -7,7 +7,7 @@ on:
 
 jobs:
   web-deploy:
-    name: 🎉 Deploy
+    name: Deploy
     runs-on: ubuntu-latest
     
     strategy:
@@ -16,15 +16,12 @@ jobs:
     
     steps:
     - name: 🚚 Get latest code
-      uses: actions/checkout@v2
+      uses: actions/checkout@v2.1.0
 
     - name: Use Node.js ${{ matrix.node-version }}
       uses: actions/setup-node@master
       with:
         node-version: ${{ matrix.node-version }}
-    
-    - name: Copy .env.prod.example to .env
-      run: cp .env.prod.example .env
 
     - name: 🔨 Build Project 
       run: |
