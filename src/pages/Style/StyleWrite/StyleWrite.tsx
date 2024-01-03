@@ -1,5 +1,3 @@
-import * as S from './StyleWrite.styled';
-
 const StyleWrite = () => {
   return (
     <>
