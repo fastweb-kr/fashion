@@ -1,7 +1,7 @@
 import * as S from './Notice.styled';
 
 const Notice = () => {
-  return <div></div>;
+  return <S.Container></S.Container>;
 };
 
 export default Notice;

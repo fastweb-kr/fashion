@@ -1,7 +1,7 @@
 import * as S from './Ootd.styled';
 
 const Ootd = () => {
-  return <div></div>;
+  return <S.Container></S.Container>;
 };
 
 export default Ootd;

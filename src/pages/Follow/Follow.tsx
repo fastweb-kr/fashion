@@ -1,5 +1,7 @@
+import * as S from './Follow.styled';
+
 const Follow = () => {
-  return <div></div>;
+  return <S.Container></S.Container>;
 };
 
 export default Follow;
