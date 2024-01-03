@@ -1,9 +1,6 @@
-import { useParams } from 'react-router-dom';
 import * as S from './StyleDetail.styled';
 
 const StyleDetail = () => {
-  const { id } = useParams();
-
   return (
     <>
       <S.Container>
