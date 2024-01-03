@@ -9,3 +9,4 @@ export { default as TwoColumnList } from './ui/List/TwoColumnList/TwoColumnList'
 export { default as TwoColumnSquare } from './ui/List/TwoColumnSquareList/TwoColumnSquareList';
 export { default as ItemCarousel } from './ui/Carousel/ItemCarousel/ItemCarousel';
 export { default as EventCarousel } from './ui/Carousel/EventCarousel/EventCarousel';
+export { default as Fab } from './ui/Button/Fab/Fab';

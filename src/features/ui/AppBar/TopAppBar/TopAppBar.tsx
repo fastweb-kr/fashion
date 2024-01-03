@@ -11,6 +11,9 @@ interface Nav {
   name: string;
 }
 
+const STYLE_WRITE_PAGE = '/style/write';
+const LOGIN_PAGE = '/login';
+
 const TopAppBar = () => {
   const rankNav: Nav[] = [
     { id: uuid(), name: '주간' },
@@ -38,20 +41,33 @@ const TopAppBar = () => {
   const path = location.pathname.split('/')[1];
 
   const [activeNav, setActiveNav] = useState<Nav[] | null>(null);
-  const isActive = activeNav !== null;
 
-  const [isLoginPage, setIsLoginPage] = useState(false);
+  const [isActiveTopAppBar, setIsActiveTopAppBar] = useState(false);
+  const [isWritePage, setIsWritePage] = useState(false);
 
   const updateUrlState = () => {
     dispatch(setPrevUrl({ prevUrl: currentUrl }));
   };
 
-  const checkLoginPage = () => {
-    if (path === 'login') {
-      setIsLoginPage(true);
-    } else {
-      setIsLoginPage(false);
-    }
+  const activeBackArrowButton = () => {
+    const hideTopAppBarPageList = [LOGIN_PAGE, STYLE_WRITE_PAGE];
+    const isHideTopAppBarPage = hideTopAppBarPageList.includes(location.pathname);
+
+    setIsActiveTopAppBar(isHideTopAppBarPage);
+  };
+
+  const activeWriteButton = () => {
+    const activeWritePageList = [STYLE_WRITE_PAGE];
+    const activeWritePage = activeWritePageList.includes(location.pathname);
+    setIsWritePage(activeWritePage);
+  };
+
+  const toggleTopAppBar = () => {
+    /** TopAppBar 뒤로가기 버튼 활성화 */
+    activeBackArrowButton();
+
+    /** TopAppBar 글쓰기 버튼 활성화 */
+    activeWriteButton();
   };
 
   useEffect(() => {
@@ -59,7 +75,7 @@ const TopAppBar = () => {
   }, [currentUrl]);
 
   useEffect(() => {
-    checkLoginPage();
+    toggleTopAppBar();
 
     switch (path) {
       case 'rank':
@@ -78,6 +94,11 @@ const TopAppBar = () => {
         setActiveNav(null);
         break;
 
+      case 'style':
+        setActiveNav(null);
+        setIsActiveTopAppBar(true);
+        break;
+
       default:
         setActiveNav(mainNav);
         break;
@@ -94,11 +115,15 @@ const TopAppBar = () => {
     <>
       <S.Container>
         <S.Inner>
-          {isLoginPage ? (
+          {isActiveTopAppBar ? (
             <S.Header>
               <S.ArrowBack to={String(prevUrl)}>
                 <img src="/img/ico-arrow-back.svg" />
               </S.ArrowBack>
+
+              <S.WriteButtonWrap className={isWritePage ? '' : 'hidden'}>
+                <S.WriteButton>글쓰기</S.WriteButton>
+              </S.WriteButtonWrap>
             </S.Header>
           ) : (
             <S.Header>
@@ -116,7 +141,7 @@ const TopAppBar = () => {
             </S.Header>
           )}
 
-          <S.Nav className={isActive ? '' : 'hidden'}>
+          <S.Nav className={isActiveTopAppBar ? 'hidden' : ''}>
             {activeNav?.map((navItem) => (
               <S.NavItem key={navItem.id}>
                 <a>{navItem.name}</a>

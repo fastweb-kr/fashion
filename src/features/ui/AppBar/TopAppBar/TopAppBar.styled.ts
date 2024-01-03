@@ -55,3 +55,28 @@ export const ButtonWrap = styled.div`
 `;
 
 export const ArrowBack = styled(Link)``;
+
+export const WriteButtonWrap = styled.div`
+  ${(props) =>
+    props.className === 'hidden' &&
+    css`
+      display: none;
+    `}
+`;
+
+export const WriteButton = styled.button`
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  width: 110px;
+  height: 36px;
+  margin: 0px;
+  background: none var(--color-bk);
+  color: var(--color-wh);
+  font-size: 14px;
+  line-height: 18px;
+  padding: 0px 16px;
+  font-weight: 500;
+  border: none;
+  border-radius: 4px;
+`;

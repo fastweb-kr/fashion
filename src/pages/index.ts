@@ -7,3 +7,5 @@ export { default as Notice } from './Community/Notice/Notice';
 export { default as Qa } from './Community/Qa/Qa';
 export { default as Ootd } from './Community/Ootd/Ootd';
 export { default as Suggest } from './Community/Suggest/Suggest';
+export { default as StyleWrite } from './Style/StyleWrite/StyleWrite';
+export { default as StyleDetail } from './Style/StyleDetail/StyleDetail';
