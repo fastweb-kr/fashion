@@ -2,6 +2,9 @@ import { useLocation } from 'react-router-dom';
 import * as S from './TopAppBar.styled';
 import uuid from 'react-uuid';
 import { useEffect, useState } from 'react';
+import { RootState } from '../../../../redux/config/configStore';
+import { useSelector, useDispatch } from 'react-redux';
+import { setCurrentUrl, setPrevUrl } from '../../../../redux/modules';
 
 interface Nav {
   id: string;
@@ -28,6 +31,9 @@ const TopAppBar = () => {
     { id: uuid(), name: '공지/이벤트' },
   ];
 
+  const dispatch = useDispatch();
+  const { prevUrl, currentUrl } = useSelector((state: RootState) => state.url);
+
   const location = useLocation();
   const path = location.pathname.split('/')[1];
 
@@ -36,7 +42,25 @@ const TopAppBar = () => {
 
   const [isLoginPage, setIsLoginPage] = useState(false);
 
+  const updateUrlState = () => {
+    dispatch(setPrevUrl({ prevUrl: currentUrl }));
+  };
+
+  const checkLoginPage = () => {
+    if (path === 'login') {
+      setIsLoginPage(true);
+    } else {
+      setIsLoginPage(false);
+    }
+  };
+
   useEffect(() => {
+    updateUrlState();
+  }, [currentUrl]);
+
+  useEffect(() => {
+    checkLoginPage();
+
     switch (path) {
       case 'rank':
         setActiveNav(rankNav);
@@ -47,7 +71,6 @@ const TopAppBar = () => {
         break;
 
       case 'login':
-        setIsLoginPage(true);
         setActiveNav(null);
         break;
 
@@ -59,6 +82,12 @@ const TopAppBar = () => {
         setActiveNav(mainNav);
         break;
     }
+
+    return () => {
+      const newUrl = location.pathname;
+
+      dispatch(setCurrentUrl({ currentUrl: newUrl }));
+    };
   }, [location.pathname]);
 
   return (
@@ -67,7 +96,7 @@ const TopAppBar = () => {
         <S.Inner>
           {isLoginPage ? (
             <S.Header>
-              <S.ArrowBack to="">
+              <S.ArrowBack to={String(prevUrl)}>
                 <img src="/img/ico-arrow-back.svg" />
               </S.ArrowBack>
             </S.Header>
