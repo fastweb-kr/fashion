@@ -1,7 +1,12 @@
+import { RankCards } from '../../features';
 import * as S from './Rank.styled';
 
 const Rank = () => {
-  return <div></div>;
+  return (
+    <>
+      <RankCards />
+    </>
+  );
 };
 
 export default Rank;
