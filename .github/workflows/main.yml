@@ -28,8 +28,8 @@ jobs:
 
     - name: 🔨 Build Project 
       run: |
-        yarn install
-        yarn run build
+        npm install
+        npm run build
     
     - name: List output files
       run: find build/ -print
