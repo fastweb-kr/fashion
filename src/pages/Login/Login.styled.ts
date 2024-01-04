@@ -1,6 +1,7 @@
 import styled from 'styled-components';
 
 export const Container = styled.div`
+  margin-top: var(--nav-height);
   padding: 0 var(--global-padding);
 `;
 

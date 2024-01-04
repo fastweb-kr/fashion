@@ -1,14 +1,14 @@
 import { Swiper, SwiperSlide } from 'swiper/react';
 import * as S from './ItemCarousel.styled';
 
-interface Item {
+interface Items {
   id: string;
-  imgSrc: string;
   title: string;
+  imgSrc: string;
 }
 
 interface ItemCarouselProps {
-  items: Item[];
+  items: Items[];
 }
 
 const ItemCarousel = ({ items }: ItemCarouselProps) => {
