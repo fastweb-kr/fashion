@@ -5,16 +5,23 @@
  * Dependency : firebase/firebase.ts
  *
  * SUMMARY:
- * 01) Items []
+ * 01) StyleItem []
  */
 
 /* *****************************************
- * 01) Items
+ * 01) StyleItem
  * *****************************************/
 
-interface Items {
+interface StyleItem {
   id: string;
-  imgSrc: string;
+  userId: string;
+  imgSrc: string[];
+  imgThumb: string;
+  title: string;
+  postDate: string;
+  tag: string[];
+  comments: string[];
+  desc: string;
 }
 
-export type { Items };
+export type { StyleItem };

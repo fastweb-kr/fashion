@@ -1,6 +1,8 @@
 import styled from 'styled-components';
 
-export const Container = styled.div``;
+export const Container = styled.div`
+  margin-top: 4px;
+`;
 
 export const Section = styled.section`
   padding: 0 var(--global-padding);
@@ -75,6 +77,37 @@ export const ImageSection = styled.div`
   width: 100%;
   height: 500px;
   background-color: var(--color-gray-01);
+
+  & .swiper {
+    width: 100%;
+    height: 100%;
+  }
+
+  & .swiper-pagination {
+    position: absolute;
+    z-index: 99;
+    right: 16px;
+    bottom: 13px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: var(--color-wh);
+    border-radius: 30px;
+    width: 50px;
+    height: 20px;
+    font-size: 12px;
+    font-weight: 900;
+    color: #6c6c6c;
+    gap: 2px;
+  }
+
+  & .swiper-slide {
+    & img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+  }
 `;
 
 export const IconSection = styled(Section)`

@@ -1,6 +1,18 @@
+import { useParams } from 'react-router-dom';
 import * as S from './StyleDetail.styled';
+import { useStyleItems } from '../../../hooks';
+import { Swiper, SwiperSlide } from 'swiper/react';
+import { Pagination } from 'swiper/modules';
+import 'swiper/css';
 
 const StyleDetail = () => {
+  const { id } = useParams();
+
+  const { styleItems, isLoading } = useStyleItems();
+  const selectedStyleItem = styleItems?.find((item) => item.id === id);
+
+  if (isLoading) return;
+
   return (
     <>
       <S.Container>
@@ -20,7 +32,21 @@ const StyleDetail = () => {
           </div>
         </S.UserSection>
 
-        <S.ImageSection></S.ImageSection>
+        <S.ImageSection>
+          <Swiper
+            slidesPerView={'auto'}
+            pagination={{
+              type: 'fraction',
+            }}
+            modules={[Pagination]}
+          >
+            {selectedStyleItem?.imgSrc.map((item, index) => (
+              <SwiperSlide key={index}>
+                <img src={item} alt={selectedStyleItem.title + index} />
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </S.ImageSection>
 
         <S.IconSection>
           <S.LeftIconWrap>
@@ -42,10 +68,10 @@ const StyleDetail = () => {
         </S.IconSection>
 
         <S.ContentSection>
-          <S.Time>2024.01.04</S.Time>
+          <S.Time>{selectedStyleItem?.postDate}</S.Time>
           <S.ContentWrap>
             <S.UserName>jun_h</S.UserName>
-            <S.Content>코듀로이 골덴 바지에 후드에 레이어드로 포인트를 주었습니다 레이어드로 포인트를 주었습니다</S.Content>
+            <S.Content>{selectedStyleItem?.desc}</S.Content>
           </S.ContentWrap>
         </S.ContentSection>
 
@@ -57,8 +83,9 @@ const StyleDetail = () => {
         <S.TagSection>
           <S.TagSectionTitle>연관태그</S.TagSectionTitle>
           <S.TagList>
-            <S.TagItem>스트릿</S.TagItem>
-            <S.TagItem>여행</S.TagItem>
+            {selectedStyleItem?.tag.map((tagItem, index) => (
+              <S.TagItem key={index}>{tagItem}</S.TagItem>
+            ))}
           </S.TagList>
         </S.TagSection>
 

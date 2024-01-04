@@ -45,6 +45,12 @@ export const NavItem = styled.li`
 export const TopAppBarMarginBox = styled.div`
   display: block;
   height: var(--top-appBar-height);
+
+  ${(props) =>
+    props.className === 'hidden' &&
+    css`
+      height: var(--header-height);
+    `}
 `;
 
 export const ButtonWrap = styled.div`

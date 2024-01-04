@@ -1,10 +1,11 @@
-import { TodayCards } from '../../features';
+import { TodayCards, MainCarousel } from '../../features';
 
 const Main = () => {
   return (
-    <div>
+    <>
+      <MainCarousel />
       <TodayCards />
-    </div>
+    </>
   );
 };
 

@@ -1,17 +1,17 @@
-import { collection, query, getDocs, addDoc, doc, deleteDoc, updateDoc } from 'firebase/firestore';
-import { Items } from '../@types';
+import { collection, query, getDocs, addDoc, doc, deleteDoc, updateDoc, getDoc } from 'firebase/firestore';
+import { StyleItem } from '../@types';
 import { db } from '../firebase';
 
 // 파이어베이스 조회
-export const getStyleItems = async (): Promise<Items[]> => {
+export const getStyleItems = async (): Promise<StyleItem[]> => {
   try {
     const q = query(collection(db, 'items'));
-    const querySnapshop = await getDocs(q);
+    const querySnapshot = await getDocs(q);
 
-    const initialItems: Items[] = [];
+    const initialItems: StyleItem[] = [];
 
-    querySnapshop.forEach((doc) => {
-      initialItems.push({ id: doc.id, ...doc.data() } as Items);
+    querySnapshot.forEach((doc) => {
+      initialItems.push({ id: doc.id, ...doc.data() } as StyleItem);
     });
 
     return initialItems;
@@ -21,8 +21,23 @@ export const getStyleItems = async (): Promise<Items[]> => {
   }
 };
 
+export const getStyleItemsById = async (id: string) => {
+  try {
+    const docRef = doc(db, 'items', id);
+    const docSnapshot = await getDoc(docRef);
+
+    if (docSnapshot.exists()) {
+      return { id: docSnapshot.id, ...docSnapshot.data };
+    } else {
+      return null;
+    }
+  } catch (error) {
+    console.error('Error fetching data: ', error);
+  }
+};
+
 // 파이어베이스 추가
-export const addStyleItem = async (newItem: Items) => {
+export const addStyleItem = async (newItem: StyleItem) => {
   try {
     const collectionRef = collection(db, 'items');
     await addDoc(collectionRef, newItem);
@@ -42,7 +57,7 @@ export const deleteStyleItem = async (id: string) => {
 };
 
 // 파이어베이스 수정
-export const updateStyleItem = async (updateItem: Items) => {
+export const updateStyleItem = async (updateItem: StyleItem) => {
   try {
     const docRef = doc(db, 'items', updateItem.id);
     await updateDoc(docRef, { ...updateItem });

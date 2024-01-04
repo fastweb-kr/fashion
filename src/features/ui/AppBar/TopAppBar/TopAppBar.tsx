@@ -92,6 +92,7 @@ const TopAppBar = () => {
 
       case 'match':
         setActiveNav(null);
+        // setIsActiveTopAppBar(true);
         break;
 
       case 'style':
@@ -141,7 +142,7 @@ const TopAppBar = () => {
             </S.Header>
           )}
 
-          <S.Nav className={isActiveTopAppBar ? 'hidden' : ''}>
+          <S.Nav className={isActiveTopAppBar || activeNav === null ? 'hidden' : ''}>
             {activeNav?.map((navItem) => (
               <S.NavItem key={navItem.id}>
                 <a>{navItem.name}</a>
@@ -150,7 +151,7 @@ const TopAppBar = () => {
           </S.Nav>
         </S.Inner>
       </S.Container>
-      <S.TopAppBarMarginBox />
+      <S.TopAppBarMarginBox className={isActiveTopAppBar ? 'hidden' : ''} />
     </>
   );
 };

@@ -1,1 +1,1 @@
-export const STYLE_ITEMS_KEY = ['styleItems'];
+export const STYLE_ITEMS_KEY = 'styleItems';
