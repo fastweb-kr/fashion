@@ -1,9 +1,6 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { STYLE_ITEMS_KEY } from '../constants/queryKeys';
 import { getStyleItems, addStyleItem, deleteStyleItem, updateStyleItem, getStyleItemsById } from '../api';
-import { StyleItem } from '../@types';
-import { useParams } from 'react-router-dom';
-
 export const useStyleItems = () => {
   const queryClient = useQueryClient();
 

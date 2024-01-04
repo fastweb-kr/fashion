@@ -1,6 +1,5 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import * as S from './Fab.styled';
-import { useState } from 'react';
 
 interface FabProps {
   positionX: number;
