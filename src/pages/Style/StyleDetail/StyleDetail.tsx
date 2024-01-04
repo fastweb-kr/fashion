@@ -7,7 +7,7 @@ const StyleDetail = () => {
         <S.UserSection>
           <S.UserWrap>
             <S.UserAvatarFigure>
-              <S.UserAvatar src="/img/user_profile_default.svg" alt="" />
+              <S.Avatar src="/img/user_profile_default.svg" alt="user avatar" />
             </S.UserAvatarFigure>
             <S.UserProfileWrap>
               <S.UserName>아이디</S.UserName>
@@ -20,47 +20,57 @@ const StyleDetail = () => {
           </div>
         </S.UserSection>
 
-        <section>image</section>
+        <S.ImageSection></S.ImageSection>
 
-        <section>
-          <div>
-            <button>좋아요</button>
-            <button>댓글</button>
-            <button>공유</button>
-          </div>
-          <div>
-            <button>북마크</button>
-          </div>
-        </section>
+        <S.IconSection>
+          <S.LeftIconWrap>
+            <S.IconButton>
+              <img src="/img/ico_like.svg" alt="좋아요" />
+            </S.IconButton>
+            <S.IconButton>
+              <img src="/img/ico_comment.svg" alt="댓글" />
+            </S.IconButton>
+            <S.IconButton>
+              <img src="/img/ico_share.svg" alt="공유" />
+            </S.IconButton>
+          </S.LeftIconWrap>
+          <S.RightIconWrap>
+            <S.IconButton>
+              <img src="/img/ico_bookmark.svg" alt="북마크" />
+            </S.IconButton>
+          </S.RightIconWrap>
+        </S.IconSection>
 
-        <section>
-          <p>time</p>
-          <div>
-            <span>name</span>
-            <p>content</p>
-          </div>
-        </section>
+        <S.ContentSection>
+          <S.Time>2024.01.04</S.Time>
+          <S.ContentWrap>
+            <S.UserName>jun_h</S.UserName>
+            <S.Content>코듀로이 골덴 바지에 후드에 레이어드로 포인트를 주었습니다 레이어드로 포인트를 주었습니다</S.Content>
+          </S.ContentWrap>
+        </S.ContentSection>
 
-        <section>
-          <h3>착용제품</h3>
+        <S.ProductSection>
+          <S.ProductSectionTitle>착용제품</S.ProductSectionTitle>
           <div></div>
-        </section>
+        </S.ProductSection>
 
-        <section>
-          <h4>연관태그</h4>
-          <ul>
-            <li>스트릿</li>
-            <li>여행</li>
-          </ul>
-        </section>
+        <S.TagSection>
+          <S.TagSectionTitle>연관태그</S.TagSectionTitle>
+          <S.TagList>
+            <S.TagItem>스트릿</S.TagItem>
+            <S.TagItem>여행</S.TagItem>
+          </S.TagList>
+        </S.TagSection>
 
-        <section>
-          <p>댓글 1개 모두보기</p>
-          <div>
-            <figure>이미지</figure>
-            <input type="text" />
-          </div>
-        </section>
+        <S.CommentSection>
+          <S.CommentSectionTitle>댓글 1개 모두보기</S.CommentSectionTitle>
+          <S.CommentWrap>
+            <S.CommentAvatarFigure>
+              <S.Avatar src="/img/user_profile_default.svg" alt="user avatar" />
+            </S.CommentAvatarFigure>
+            <S.InputText type="text" placeholder="로그인 후 댓글을 작성해주세요" />
+          </S.CommentWrap>
+        </S.CommentSection>
       </S.Container>
     </>
   );
