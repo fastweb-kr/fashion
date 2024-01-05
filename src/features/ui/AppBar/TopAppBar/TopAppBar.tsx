@@ -44,6 +44,7 @@ const TopAppBar = () => {
 
   const [isActiveTopAppBar, setIsActiveTopAppBar] = useState(false);
   const [isWritePage, setIsWritePage] = useState(false);
+  const [isShare, setIsShare] = useState(false);
 
   const updateUrlState = () => {
     dispatch(setPrevUrl({ prevUrl: currentUrl }));
@@ -76,6 +77,7 @@ const TopAppBar = () => {
 
   useEffect(() => {
     toggleTopAppBar();
+    setIsShare(false);
 
     switch (path) {
       case 'rank':
@@ -98,6 +100,7 @@ const TopAppBar = () => {
       case 'style':
         setActiveNav(null);
         setIsActiveTopAppBar(true);
+        setIsShare(true);
         break;
 
       default:
@@ -122,9 +125,21 @@ const TopAppBar = () => {
                 <img src="/img/ico-arrow-back.svg" />
               </S.ArrowBack>
 
-              <S.PageTitleWrap className={isWritePage ? '' : 'hidden'}>
-                <S.PageTitle>스타일 공유</S.PageTitle>
-              </S.PageTitleWrap>
+              {isShare ? (
+                <button>
+                  <img src="/img/ico_share.svg" alt="공유" />
+                </button>
+              ) : (
+                ''
+              )}
+
+              {isWritePage ? (
+                <S.PageTitleWrap className={isWritePage ? '' : 'hidden'}>
+                  <S.PageTitle>스타일 공유</S.PageTitle>
+                </S.PageTitleWrap>
+              ) : (
+                ''
+              )}
             </S.Header>
           ) : (
             <S.Header>

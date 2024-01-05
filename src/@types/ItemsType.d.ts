@@ -16,7 +16,7 @@ interface StyleItem {
   id: string;
   userId: string;
   imgSrc: string[];
-  imgThumb: string;
+  imgThumb?: string;
   content: string;
   postDate: string;
   tag: string[];
