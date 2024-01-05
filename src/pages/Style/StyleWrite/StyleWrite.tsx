@@ -54,16 +54,18 @@ const StyleWrite = () => {
       <S.Container>
         <S.Form>
           {imgSrcArray.length === 0 ? (
-            <S.UploadImage htmlFor="fileInput">
-              <input id="fileInput" type="file" accept="image/*" onChange={handleFileSelect} multiple />
-              <h3>사진 올리기</h3>
-              <p>10장까지 올릴 수 있어요.</p>
-            </S.UploadImage>
+            <S.UploadImageWrap>
+              <S.UploadImage htmlFor="fileInput">
+                <input id="fileInput" type="file" accept="image/*" onChange={handleFileSelect} multiple />
+                <h3>사진 올리기</h3>
+                <p>10장까지 올릴 수 있어요.</p>
+              </S.UploadImage>
+            </S.UploadImageWrap>
           ) : (
             <>
-              <S.UploadImage>
-                <S.PreviewImage src={imgSrcArray[imgSrcArray.length - 1]} />
-              </S.UploadImage>
+              <S.PreviewImage>
+                <img src={imgSrcArray[imgSrcArray.length - 1]} />
+              </S.PreviewImage>
 
               <S.ImageListWrap>
                 <S.UploadImage htmlFor="addFileInput">
