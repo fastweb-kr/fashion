@@ -1,17 +1,12 @@
 import { useMutation, useQuery, useQueryClient } from '@tanstack/react-query';
 import { STYLE_ITEMS_KEY } from '../constants/queryKeys';
 import { getStyleItems, addStyleItem, deleteStyleItem, updateStyleItem, getStyleItemsById } from '../api';
+
 export const useStyleItems = () => {
   const queryClient = useQueryClient();
 
   // 조회
   const { data: styleItems, isLoading } = useQuery({ queryKey: [STYLE_ITEMS_KEY], queryFn: getStyleItems });
-
-  // if (id) {
-  //   const { data: selectedStyleItem } = useQuery({ queryKey: [STYLE_ITEMS_KEY, id], queryFn: () => getStyleItemsById(id) });
-
-  //   return selectedStyleItem;
-  // }
 
   const styleItemByIdMutation = useMutation({
     mutationFn: getStyleItemsById,

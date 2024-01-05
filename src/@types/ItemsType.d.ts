@@ -17,11 +17,10 @@ interface StyleItem {
   userId: string;
   imgSrc: string[];
   imgThumb: string;
-  title: string;
+  content: string;
   postDate: string;
   tag: string[];
-  comments: string[];
-  desc: string;
+  comments?: string[];
 }
 
 export type { StyleItem };

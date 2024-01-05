@@ -15,7 +15,7 @@ const Router = () => {
             <Route path="/login" element={<Login />} />
 
             <Route path="/style/:id" element={<StyleDetail />} />
-            <Route path="/style/write" element={<StyleWrite />} />
+            <Route path="/write" element={<StyleWrite />} />
           </Route>
         </Route>
       </Routes>
