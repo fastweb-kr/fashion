@@ -1,6 +1,8 @@
 import { collection, query, getDocs, addDoc, doc, deleteDoc, updateDoc, getDoc } from 'firebase/firestore';
 import { StyleItem } from '../@types';
-import { db } from '../firebase';
+import { db, storage } from '../firebase';
+import uuid from 'react-uuid';
+import { uploadBytes, ref, getDownloadURL, deleteObject } from 'firebase/storage';
 
 // 파이어베이스 조회
 export const getStyleItems = async (): Promise<StyleItem[]> => {
@@ -63,5 +65,32 @@ export const updateStyleItem = async (updateItem: StyleItem) => {
     await updateDoc(docRef, { ...updateItem });
   } catch (error) {
     console.error('Error update data: ', error);
+  }
+};
+
+// 파이어스토어 파일 업로드
+export const addImageToStorage = async (image: File | null) => {
+  try {
+    if (!image) return;
+    const imageName = `${uuid()}_${image.name}`;
+
+    const storageRef = ref(storage, `images/${imageName}`);
+    await uploadBytes(storageRef, image);
+
+    const downloadUrl = await getDownloadURL(storageRef);
+
+    return downloadUrl;
+  } catch (error) {
+    console.error('Error upload data: ', error);
+  }
+};
+
+export const removeImageFromStorage = async (image: File | null) => {
+  try {
+    if (!image) return;
+    const storageRef = ref(storage, `images/${image}`);
+    await deleteObject(storageRef);
+  } catch (error) {
+    console.error('Error remove File data: ', error);
   }
 };

@@ -56,9 +56,6 @@ const StyleDetail = () => {
             <S.IconButton>
               <img src="/img/ico_comment.svg" alt="댓글" />
             </S.IconButton>
-            <S.IconButton>
-              <img src="/img/ico_share.svg" alt="공유" />
-            </S.IconButton>
           </S.LeftIconWrap>
           <S.RightIconWrap>
             <S.IconButton>
