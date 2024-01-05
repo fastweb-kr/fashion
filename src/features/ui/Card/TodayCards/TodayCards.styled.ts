@@ -15,6 +15,9 @@ export const IconMore = styled.img`
 
 export const Card = styled.div`
   position: relative;
+  height: 250px;
+  overflow: hidden;
+  background-color: var(--color-gray-01);
 `;
 
 export const CardFigure = styled.figure`

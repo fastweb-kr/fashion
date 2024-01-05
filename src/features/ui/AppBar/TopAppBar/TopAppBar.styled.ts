@@ -62,7 +62,11 @@ export const ButtonWrap = styled.div`
 
 export const ArrowBack = styled(Link)``;
 
-export const WriteButtonWrap = styled.div`
+export const PageTitleWrap = styled.div`
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+
   ${(props) =>
     props.className === 'hidden' &&
     css`
@@ -70,19 +74,8 @@ export const WriteButtonWrap = styled.div`
     `}
 `;
 
-export const WriteButton = styled.button`
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  width: 110px;
-  height: 36px;
-  margin: 0px;
-  background: none var(--color-bk);
-  color: var(--color-wh);
-  font-size: 14px;
+export const PageTitle = styled.h5`
+  font-size: 16px;
   line-height: 18px;
-  padding: 0px 16px;
   font-weight: 500;
-  border: none;
-  border-radius: 4px;
 `;

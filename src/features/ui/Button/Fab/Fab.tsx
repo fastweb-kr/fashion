@@ -1,15 +1,13 @@
 import { useLocation, useNavigate } from 'react-router-dom';
 import * as S from './Fab.styled';
-
-interface FabProps {
-  positionX: number;
-}
+import { useGetDistanceToRight } from '../../../../hooks';
 
 const GLOBAL_PADDING = 16;
 const HidePageList = ['login', 'write', 'style', 'community', 'rank', 'match'];
 
-const Fab: React.FC<FabProps> = ({ positionX }) => {
+const Fab = () => {
   const navigate = useNavigate();
+  const positionX = useGetDistanceToRight();
 
   const handleWrite = () => {
     navigate('/write?category=style');

@@ -122,9 +122,9 @@ const TopAppBar = () => {
                 <img src="/img/ico-arrow-back.svg" />
               </S.ArrowBack>
 
-              <S.WriteButtonWrap className={isWritePage ? '' : 'hidden'}>
-                <S.WriteButton>글쓰기</S.WriteButton>
-              </S.WriteButtonWrap>
+              <S.PageTitleWrap className={isWritePage ? '' : 'hidden'}>
+                <S.PageTitle>스타일 공유</S.PageTitle>
+              </S.PageTitleWrap>
             </S.Header>
           ) : (
             <S.Header>
