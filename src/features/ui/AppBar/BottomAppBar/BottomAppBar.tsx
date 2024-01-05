@@ -41,6 +41,7 @@ const BottomAppBar = () => {
     checkLoginPage();
 
     switch (path) {
+      case '/write':
       case '/login':
         setIsLoginPage(true);
         break;

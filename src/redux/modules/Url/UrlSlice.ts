@@ -16,11 +16,13 @@ const urlSlice = createSlice({
     },
 
     setCurrentUrl: (state, action: SetUrlAction) => {
-      if (action.payload.currentUrl?.includes('login')) {
+      const excludedKeywords = ['login', 'write'];
+
+      if (excludedKeywords.some((keyword) => action.payload.currentUrl?.includes(keyword))) {
         return;
-      } else {
-        state.currentUrl = action.payload.currentUrl;
       }
+
+      state.currentUrl = action.payload.currentUrl;
     },
 
     setPrevUrl: (state, action: SetUrlAction) => {

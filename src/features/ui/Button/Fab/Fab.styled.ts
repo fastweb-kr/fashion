@@ -1,4 +1,4 @@
-import styled from 'styled-components';
+import styled, { css } from 'styled-components';
 
 export const Container = styled.div`
   position: relative;
@@ -17,4 +17,10 @@ export const Button = styled.button`
   border-radius: 30px;
   font-size: 20px;
   font-weight: 500;
+
+  ${(props) =>
+    props.className === 'hidden' &&
+    css`
+      display: none;
+    `}
 `;

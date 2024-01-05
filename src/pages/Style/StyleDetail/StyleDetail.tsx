@@ -42,7 +42,7 @@ const StyleDetail = () => {
           >
             {selectedStyleItem?.imgSrc.map((item, index) => (
               <SwiperSlide key={index}>
-                <img src={item} alt={selectedStyleItem.title + index} />
+                <img src={item} alt={selectedStyleItem.content + index} />
               </SwiperSlide>
             ))}
           </Swiper>
@@ -71,7 +71,7 @@ const StyleDetail = () => {
           <S.Time>{selectedStyleItem?.postDate}</S.Time>
           <S.ContentWrap>
             <S.UserName>jun_h</S.UserName>
-            <S.Content>{selectedStyleItem?.desc}</S.Content>
+            <S.Content>{selectedStyleItem?.content}</S.Content>
           </S.ContentWrap>
         </S.ContentSection>
 

@@ -11,7 +11,7 @@ interface Nav {
   name: string;
 }
 
-const STYLE_WRITE_PAGE = '/style/write';
+const STYLE_WRITE_PAGE = '/write';
 const LOGIN_PAGE = '/login';
 
 const TopAppBar = () => {

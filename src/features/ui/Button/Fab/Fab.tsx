@@ -6,18 +6,18 @@ interface FabProps {
 }
 
 const GLOBAL_PADDING = 16;
-const HidePageList = ['login'];
+const HidePageList = ['login', 'write', 'style', 'community', 'rank', 'match'];
 
 const Fab: React.FC<FabProps> = ({ positionX }) => {
   const navigate = useNavigate();
 
   const handleWrite = () => {
-    navigate('/style/write');
+    navigate('/write?category=style');
   };
 
   const ishidePage = () => {
     const location = useLocation();
-    const path = location.pathname;
+    const path = location.pathname.split('/')[1];
 
     return HidePageList.includes(path);
   };
