@@ -54,8 +54,8 @@ const StyleWrite = () => {
       <S.Container>
         <S.Form>
           {imgSrcArray.length === 0 ? (
-            <S.UploadImage>
-              <input type="file" accept="image/*" onChange={handleFileSelect} />
+            <S.UploadImage htmlFor="fileInput">
+              <input id="fileInput" type="file" accept="image/*" onChange={handleFileSelect} multiple />
               <h3>사진 올리기</h3>
               <p>10장까지 올릴 수 있어요.</p>
             </S.UploadImage>
@@ -64,9 +64,10 @@ const StyleWrite = () => {
               <S.UploadImage>
                 <S.PreviewImage src={imgSrcArray[imgSrcArray.length - 1]} />
               </S.UploadImage>
+
               <S.ImageListWrap>
-                <S.UploadImage>
-                  <input type="file" accept="image/*" onChange={handleFileSelect} />
+                <S.UploadImage htmlFor="addFileInput">
+                  <input id="addFileInput" type="file" accept="image/*" onChange={handleFileSelect} multiple />
                   <h3>사진 추가</h3>
                 </S.UploadImage>
                 <Swiper slidesPerView={'auto'}>

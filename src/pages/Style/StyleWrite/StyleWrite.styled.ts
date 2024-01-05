@@ -5,7 +5,7 @@ export const Container = styled.div`
   padding: var(--global-padding);
 `;
 
-export const UploadImage = styled.div`
+export const UploadImage = styled.label`
   display: flex;
   align-items: center;
   justify-content: center;
@@ -15,6 +15,10 @@ export const UploadImage = styled.div`
   background-color: var(--color-gray-01);
   border-radius: 4px;
   line-height: 1.4;
+
+  & input {
+    display: none;
+  }
 
   & h3 {
     font-size: 16px;
@@ -38,6 +42,7 @@ export const InputText = styled.input`
   border-radius: 4px;
   padding: 16px;
   resize: none;
+  font-size: 13px;
 
   &::placeholder {
     color: var(--color-gray-03);
