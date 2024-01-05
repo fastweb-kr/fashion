@@ -1,4 +1,3 @@
-import { useEffect, useState } from 'react';
 import { BottomAppBar, Fab, TopAppBar } from '../../..';
 import * as S from './AppLayout.styled';
 import { Outlet } from 'react-router-dom';
