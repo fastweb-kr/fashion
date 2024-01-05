@@ -2,7 +2,11 @@ import styled from 'styled-components';
 
 export const Container = styled.div`
   border-top: 1px solid var(--color-gray-01);
+`;
+
+export const UploadImageWrap = styled.div`
   padding: var(--global-padding);
+  padding-bottom: 0;
 `;
 
 export const UploadImage = styled.label`
@@ -32,7 +36,9 @@ export const UploadImage = styled.label`
   }
 `;
 
-export const InputWrap = styled.div``;
+export const InputWrap = styled.div`
+  padding: 8px var(--global-padding);
+`;
 
 export const InputText = styled.input`
   width: 100%;
@@ -78,6 +84,7 @@ export const Form = styled.div`
     background-color: var(--color-gray-01);
     margin-right: 8px;
     border-radius: 4px;
+    overflow: hidden;
 
     & img {
       width: 100%;
@@ -98,8 +105,7 @@ export const Form = styled.div`
 export const ImageListWrap = styled.div`
   display: grid;
   grid-template-columns: 20% 1fr;
-
-  padding: 8px 0;
+  padding: 8px var(--global-padding);
 
   & .swiper {
     width: 100%;
@@ -116,7 +122,13 @@ export const ImageListWrap = styled.div`
   }
 `;
 
-export const PreviewImage = styled.img`
-  width: 100%;
-  height: 100%;
+export const PreviewImage = styled(UploadImage).attrs({ as: 'figure' })`
+  overflow: hidden;
+  border-radius: 0;
+
+  & img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+  }
 `;
