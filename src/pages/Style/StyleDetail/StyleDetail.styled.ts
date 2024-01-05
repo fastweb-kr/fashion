@@ -75,7 +75,7 @@ export const FollowButton = styled.button`
 
 export const ImageSection = styled.div`
   width: 100%;
-  height: 500px;
+  height: 400px;
   background-color: var(--color-gray-01);
 
   & .swiper {
