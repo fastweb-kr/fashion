@@ -20,9 +20,15 @@ const TodayCards = () => {
       <S.Container>
         {styleItems?.map((card) => (
           <S.Card key={card.id} onClick={() => handleCardClick(card.id)}>
-            <S.IconMore src="/img/ico_img_more.svg" />
             <S.CardFigure>
-              <S.CardImg src={card.imgThumb} alt={`Card ${card.id}`} />
+              {card.imgThumb ? (
+                <>
+                  <S.IconMore src="/img/ico_img_more.svg" />
+                  <S.CardImg src={card.imgThumb} alt={`Card ${card.id}`} />
+                </>
+              ) : (
+                ''
+              )}
             </S.CardFigure>
           </S.Card>
         ))}

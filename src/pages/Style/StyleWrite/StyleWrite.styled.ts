@@ -41,3 +41,26 @@ export const InputText = styled.input`
     color: var(--color-gray-03);
   }
 `;
+
+export const ButtonWrap = styled.div`
+  position: fixed;
+  bottom: 0;
+  right: 0;
+  width: 100%;
+  max-width: var(--app-width);
+  height: var(--bottom-appBar-height);
+  box-sizing: border-box;
+  padding: 8px;
+`;
+
+export const SubmitButton = styled.button`
+  width: 100%;
+  height: 100%;
+  border-radius: 4px;
+  background-color: var(--color-bk);
+  color: var(--color-wh);
+  font-size: 18px;
+  font-weight: 600;
+`;
+
+export const Form = styled.form``;
