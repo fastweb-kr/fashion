@@ -63,8 +63,8 @@ const Mypage = () => {
           <S.postWrap>
             {myStyleItem?.map((item) => (
               <>
-                <S.Card>
-                  <S.CardFigure key={item.id}>
+                <S.Card key={item.id}>
+                  <S.CardFigure>
                     <S.IconMore src="/img/ico_img_more.svg" />
                     <S.CardImg src={item.imgThumb} alt={`Item ${item.id}`} />
                   </S.CardFigure>

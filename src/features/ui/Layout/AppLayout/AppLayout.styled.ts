@@ -8,4 +8,9 @@ export const Container = styled.div`
   min-height: 100vh;
   background-color: var(--color-wh);
   overflow: hidden;
+
+  @media (max-width: 840px) {
+    left: 50%;
+    transform: translateX(-50%);
+  }
 `;
