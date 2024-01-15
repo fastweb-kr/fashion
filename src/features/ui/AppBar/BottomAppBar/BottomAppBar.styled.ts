@@ -11,7 +11,7 @@ export const Container = styled.div`
   width: 100%;
   min-height: var(--bottom-appBar-height);
   background-color: var(--color-wh);
-  box-shadow: 0 -10px 60px rgba(35, 35, 35, 0.1);
+  /* box-shadow: 0 -10px 8px rgba(35, 35, 35, 0.03); */
   &.hidden {
     display: none;
   }
