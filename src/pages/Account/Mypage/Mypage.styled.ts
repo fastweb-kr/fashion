@@ -89,10 +89,12 @@ export const LogoutButton = styled(updateProfileBtn)`
   width: calc(100% - var(--global-padding) * 2);
   position: absolute;
   bottom: var(--bottom-appBar-height);
+  background-color: var(--color-wh);
 `;
 
 export const postWrap = styled(Extends.Container)`
   margin-top: 16px;
+  margin-bottom: 64px;
 `;
 export const Card = styled(Extends.Card)``;
 export const CardFigure = styled(Extends.CardFigure)``;
