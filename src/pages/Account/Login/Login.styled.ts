@@ -12,7 +12,7 @@ export const Title = styled.h2`
   margin-bottom: 58px;
 `;
 
-export const InputWrap = styled.div`
+export const Form = styled.form`
   display: flex;
   flex-direction: column;
   gap: 8px;

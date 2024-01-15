@@ -4,12 +4,18 @@ import { useStyleItems } from '../../../hooks';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import 'swiper/css';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../redux/config/configStore';
+import { userQueries } from '../../../api/User/UserQueries';
+import { useEffect } from 'react';
 
 const StyleDetail = () => {
   const { id } = useParams();
 
   const { styleItems, isLoading } = useStyleItems();
   const selectedStyleItem = styleItems?.find((item) => item.id === id);
+  const { users } = userQueries();
+  const selectedUser = users?.find((user) => user.id === selectedStyleItem?.userId);
 
   if (isLoading) return;
 
@@ -22,8 +28,12 @@ const StyleDetail = () => {
               <S.Avatar src="/img/user_profile_default.svg" alt="user avatar" />
             </S.UserAvatarFigure>
             <S.UserProfileWrap>
-              <S.UserName>아이디</S.UserName>
-              <S.UserDesc>설명</S.UserDesc>
+              <S.UserName>{selectedUser?.name}</S.UserName>
+              <S.UserDesc>
+                <S.userDescItem>{selectedUser?.height}cm</S.userDescItem>
+                <span>ㆍ</span>
+                <S.userDescItem>{selectedUser?.weight}kg</S.userDescItem>
+              </S.UserDesc>
             </S.UserProfileWrap>
           </S.UserWrap>
 
@@ -67,7 +77,7 @@ const StyleDetail = () => {
         <S.ContentSection>
           <S.Time>{selectedStyleItem?.postDate}</S.Time>
           <S.ContentWrap>
-            <S.UserName>jun_h</S.UserName>
+            <S.UserName>{selectedUser?.name}</S.UserName>
             <S.Content>{selectedStyleItem?.content}</S.Content>
           </S.ContentWrap>
         </S.ContentSection>

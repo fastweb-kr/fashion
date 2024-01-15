@@ -1,6 +1,6 @@
 export { default as Main } from './Main/Main';
 export { default as Match } from './Match/Match';
-export { default as Login } from './Login/Login';
+export { default as Login } from './Account/Login/Login';
 export { default as Rank } from './Rank/Rank';
 export { default as Community } from './Community/Community/Community';
 export { default as Notice } from './Community/Notice/Notice';
@@ -9,3 +9,4 @@ export { default as Ootd } from './Community/Ootd/Ootd';
 export { default as Suggest } from './Community/Suggest/Suggest';
 export { default as StyleWrite } from './Style/StyleWrite/StyleWrite';
 export { default as StyleDetail } from './Style/StyleDetail/StyleDetail';
+export { default as SignUp } from './Account/SignUp/SignUp';

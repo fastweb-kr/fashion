@@ -219,3 +219,7 @@ export const InputText = styled.input`
     color: var(--color-gray-03);
   }
 `;
+
+export const userDescItem = styled.span`
+  /* margin-right: 4px; */
+`;

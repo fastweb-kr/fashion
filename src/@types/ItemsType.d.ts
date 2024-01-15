@@ -16,6 +16,8 @@ interface StyleItem {
   id: string;
   userId: string;
   imgSrc: string[];
+  name: string | null;
+  profileImg: string | null;
   imgThumb?: string;
   content: string;
   postDate: string;

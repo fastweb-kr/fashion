@@ -1,10 +1,12 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useParams } from 'react-router-dom';
 import * as S from './TopAppBar.styled';
 import uuid from 'react-uuid';
 import { useEffect, useState } from 'react';
 import { RootState } from '../../../../redux/config/configStore';
 import { useSelector, useDispatch } from 'react-redux';
 import { setCurrentUrl, setPrevUrl } from '../../../../redux/modules';
+import { useStyleItems, useToggleActive } from '../../../../hooks';
+import useGoToHome from '../../../../hooks/useGoToHome';
 
 interface Nav {
   id: string;
@@ -15,6 +17,8 @@ const STYLE_WRITE_PAGE = '/write';
 const LOGIN_PAGE = '/login';
 
 const TopAppBar = () => {
+  const { id } = useParams<{ id: string }>();
+
   const rankNav: Nav[] = [
     { id: uuid(), name: '주간' },
     { id: uuid(), name: '월간' },
@@ -36,11 +40,13 @@ const TopAppBar = () => {
 
   const dispatch = useDispatch();
   const { prevUrl, currentUrl } = useSelector((state: RootState) => state.url);
+  const loginUser = useSelector((state: RootState) => state.user);
 
   const location = useLocation();
   const path = location.pathname.split('/')[1];
 
   const [activeNav, setActiveNav] = useState<Nav[] | null>(null);
+  const { isActive, toggleActive, resetToggleState } = useToggleActive(false);
 
   const [isActiveTopAppBar, setIsActiveTopAppBar] = useState(false);
   const [isWritePage, setIsWritePage] = useState(false);
@@ -50,6 +56,21 @@ const TopAppBar = () => {
     dispatch(setPrevUrl({ prevUrl: currentUrl }));
   };
 
+  const goToHome = useGoToHome();
+
+  // 글 삭제
+  const { deleteStyleItem } = useStyleItems();
+  const handleDelete = async () => {
+    if (!id) return;
+    try {
+      await deleteStyleItem(id);
+      goToHome();
+    } catch (error) {
+      console.error('Error Delete Style Item', error);
+    }
+  };
+
+  // 뒤로가기
   const activeBackArrowButton = () => {
     const hideTopAppBarPageList = [LOGIN_PAGE, STYLE_WRITE_PAGE];
     const isHideTopAppBarPage = hideTopAppBarPageList.includes(location.pathname);
@@ -57,6 +78,7 @@ const TopAppBar = () => {
     setIsActiveTopAppBar(isHideTopAppBarPage);
   };
 
+  // 글쓰기
   const activeWriteButton = () => {
     const activeWritePageList = [STYLE_WRITE_PAGE];
     const activeWritePage = activeWritePageList.includes(location.pathname);
@@ -73,6 +95,7 @@ const TopAppBar = () => {
 
   useEffect(() => {
     updateUrlState();
+    resetToggleState();
   }, [currentUrl]);
 
   useEffect(() => {
@@ -88,8 +111,10 @@ const TopAppBar = () => {
         setActiveNav(communityNav);
         break;
 
+      case 'signup':
       case 'login':
         setActiveNav(null);
+        setIsActiveTopAppBar(true);
         break;
 
       case 'match':
@@ -125,13 +150,30 @@ const TopAppBar = () => {
                 <img src="/img/ico-arrow-back.svg" />
               </S.ArrowBack>
 
-              {isShare ? (
-                <button>
-                  <img src="/img/ico_share.svg" alt="공유" />
-                </button>
-              ) : (
-                ''
-              )}
+              <S.UtilRightWrap>
+                {isShare ? (
+                  <button>
+                    <S.Icon src="/img/ico_share.svg" alt="공유" />
+                  </button>
+                ) : (
+                  ''
+                )}
+
+                {loginUser && !isWritePage ? (
+                  <S.MenusWrap>
+                    <button onClick={toggleActive}>
+                      <S.Icon src="/img/ico_more.svg" alt="more" />
+                    </button>
+
+                    <S.Menus className={isActive ? 'active' : ''}>
+                      <S.MenuItem>수정</S.MenuItem>
+                      <S.MenuItem onClick={handleDelete}>삭제</S.MenuItem>
+                    </S.Menus>
+                  </S.MenusWrap>
+                ) : (
+                  ''
+                )}
+              </S.UtilRightWrap>
 
               {isWritePage ? (
                 <S.PageTitleWrap className={isWritePage ? '' : 'hidden'}>

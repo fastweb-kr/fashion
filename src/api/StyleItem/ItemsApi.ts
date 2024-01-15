@@ -1,6 +1,6 @@
-import { collection, query, getDocs, addDoc, doc, deleteDoc, updateDoc, getDoc } from 'firebase/firestore';
-import { StyleItem } from '../@types';
-import { db, storage } from '../firebase';
+import { collection, query, getDocs, doc, deleteDoc, updateDoc, getDoc, setDoc } from 'firebase/firestore';
+import { StyleItem } from '../../@types';
+import { db, storage } from '../../firebase';
 import uuid from 'react-uuid';
 import { uploadBytes, ref, getDownloadURL, deleteObject } from 'firebase/storage';
 
@@ -41,8 +41,8 @@ export const getStyleItemsById = async (id: string) => {
 // 파이어베이스 추가
 export const addStyleItem = async (newItem: StyleItem) => {
   try {
-    const collectionRef = collection(db, 'items');
-    await addDoc(collectionRef, newItem);
+    const docRef = doc(db, 'items', newItem.id);
+    await setDoc(docRef, newItem);
   } catch (error) {
     console.error('Error add data: ', error);
   }
