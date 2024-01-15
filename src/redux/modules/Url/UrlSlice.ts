@@ -16,7 +16,7 @@ const urlSlice = createSlice({
     },
 
     setCurrentUrl: (state, action: SetUrlAction) => {
-      const excludedKeywords = ['login', 'write'];
+      const excludedKeywords = ['login', 'write', 'signup'];
 
       if (excludedKeywords.some((keyword) => action.payload.currentUrl?.includes(keyword))) {
         return;

@@ -6,6 +6,7 @@
  *
  * SUMMARY:
  * 01) UrlSlice []
+ * 02) UserSlice []
  */
 
 import { PayloadAction } from '@reduxjs/toolkit';
@@ -21,3 +22,18 @@ interface UrlState {
 type SetUrlAction = PayloadAction<UrlState>;
 
 export type { UrlState, SetUrlAction };
+
+/* *****************************************
+ * 02) UserSlice
+ * *****************************************/
+interface UserState {
+  id: string;
+  name: string | null;
+  profileImg: string | null;
+  height: string | null;
+  weight: string | null;
+}
+
+type SetUserAction = PayloadAction<UserState>;
+
+export type { UserState, SetUserAction };

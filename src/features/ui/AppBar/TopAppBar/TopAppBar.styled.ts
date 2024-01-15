@@ -79,3 +79,48 @@ export const PageTitle = styled.h5`
   line-height: 18px;
   font-weight: 500;
 `;
+
+export const UtilRightWrap = styled.div`
+  display: flex;
+  gap: 20px;
+`;
+
+export const Icon = styled.img`
+  height: 18px;
+`;
+
+export const MenusWrap = styled.div`
+  position: relative;
+`;
+
+export const Menus = styled.ul`
+  position: absolute;
+  z-index: 999;
+  background-color: var(--color-wh);
+  display: flex;
+  flex-direction: column;
+  right: 0;
+  border-radius: 4px;
+  overflow: hidden;
+  border: 1px solid var(--color-gray-01);
+  margin-top: 8px;
+
+  display: none;
+  ${(props) =>
+    props.className === 'active' &&
+    css`
+      display: block;
+    `}
+`;
+
+export const MenuItem = styled.li`
+  width: 120px;
+  padding: 12px 16px;
+  border-bottom: 1px solid var(--color-gray-01);
+  font-size: 15px;
+  cursor: pointer;
+
+  &:last-child {
+    border-bottom: none;
+  }
+`;

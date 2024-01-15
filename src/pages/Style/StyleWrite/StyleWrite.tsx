@@ -5,11 +5,18 @@ import { useGetDistanceToRight, useStyleItems } from '../../../hooks';
 import uuid from 'react-uuid';
 import { useFileSelect } from '../../../hooks/useFileSelect';
 import { Swiper, SwiperSlide } from 'swiper/react';
+import { useSelector } from 'react-redux';
+import { RootState } from '../../../redux/config/configStore';
+import useGoToHome from '../../../hooks/useGoToHome';
 
 const StyleWrite = () => {
+  const loginUser = useSelector((state: RootState) => state.user);
+
   const initialNewStyleItem: StyleItem = {
     id: uuid(),
-    userId: 'admin',
+    userId: loginUser.id,
+    name: loginUser.name,
+    profileImg: loginUser.profileImg,
     imgSrc: [],
     imgThumb: '',
     postDate: '',
@@ -26,6 +33,7 @@ const StyleWrite = () => {
   const [imgSrcArray, setImgSrcArray] = useState<string[]>([]);
 
   const buttonPosition = { right: positionX };
+  const goToHome = useGoToHome();
 
   const handleOnChange = (e: React.ChangeEvent<HTMLInputElement>) => {
     const { value } = e.target;
@@ -36,6 +44,7 @@ const StyleWrite = () => {
     if (fileUrl) {
       const updatedStyleItem = { ...newStyleItem, imgThumb: imgSrcArray[0], imgSrc: imgSrcArray };
       addStyleItem(updatedStyleItem);
+      goToHome();
     }
   };
 

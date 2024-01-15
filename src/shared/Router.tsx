@@ -1,5 +1,5 @@
 import { BrowserRouter, Route, Routes } from 'react-router-dom';
-import { Community, Login, Main, Match, Rank, StyleDetail, StyleWrite } from '../pages';
+import { Community, Login, Main, Match, Rank, SignUp, StyleDetail, StyleWrite } from '../pages';
 import { AppLayout, BasicLayout } from '../features';
 
 const Router = () => {
@@ -13,7 +13,7 @@ const Router = () => {
             <Route path="/community" element={<Community />} />
             <Route path="/match" element={<Match />} />
             <Route path="/login" element={<Login />} />
-
+            <Route path="/signup" element={<SignUp />} />
             <Route path="/style/:id" element={<StyleDetail />} />
             <Route path="/write" element={<StyleWrite />} />
           </Route>

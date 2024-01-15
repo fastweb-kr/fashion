@@ -6,7 +6,7 @@ const GlobalStyles = createGlobalStyle`
 /** reset */
 ${reset}
 *{box-sizing: border-box}
-body{ background-color: var(--color-gray);}
+body{  }
 button{ background: inherit ; border:none; box-shadow:none; border-radius:0; padding:0; overflow:visible; cursor:pointer}
 a, a:hover{cursor: pointer; text-decoration: none; outline: none; color: inherit}
 /** system */

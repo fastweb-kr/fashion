@@ -1,10 +1,10 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { writeSlice, urlSlice } from '../modules';
+import { urlSlice, userSlice } from '../modules';
 
 const store = configureStore({
   reducer: {
     url: urlSlice,
-    writeData: writeSlice,
+    user: userSlice,
   },
 });
 
