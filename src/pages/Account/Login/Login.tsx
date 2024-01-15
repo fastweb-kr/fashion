@@ -26,7 +26,7 @@ const Login = () => {
   const signIn = async (e: React.MouseEvent<HTMLButtonElement>) => {
     e.preventDefault();
     try {
-      const userCredential = await signInWithEmailAndPassword(auth, email, password);
+      await signInWithEmailAndPassword(auth, email, password);
       navigate('/');
     } catch (error) {
       console.error(error);

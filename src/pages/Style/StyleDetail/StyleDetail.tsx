@@ -4,10 +4,7 @@ import { useStyleItems } from '../../../hooks';
 import { Swiper, SwiperSlide } from 'swiper/react';
 import { Pagination } from 'swiper/modules';
 import 'swiper/css';
-import { useSelector } from 'react-redux';
-import { RootState } from '../../../redux/config/configStore';
 import { userQueries } from '../../../api/User/UserQueries';
-import { useEffect } from 'react';
 
 const StyleDetail = () => {
   const { id } = useParams();

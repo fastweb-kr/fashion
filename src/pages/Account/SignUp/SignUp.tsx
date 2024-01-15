@@ -15,8 +15,6 @@ const SignUp = () => {
     weight: '',
   };
 
-  const [newUser, setNewUser] = useState(initialUser);
-
   const [email, setEmail] = useState('');
   const [password, setPassword] = useState('');
   const [height, setHeight] = useState('');
@@ -49,7 +47,7 @@ const SignUp = () => {
     e.preventDefault();
 
     try {
-      const updatedNewUser = { ...newUser, id: email, name: emailToUserName(email), height, weight };
+      const updatedNewUser = { ...initialUser, id: email, name: emailToUserName(email), height, weight };
       await createUserWithEmailAndPassword(auth, email, password);
 
       await addUser(updatedNewUser);
