@@ -40,7 +40,6 @@ function App() {
         fetchLoginUser(user.email);
       } else {
         dispatch(setUser(initialUser));
-        console.log('logout');
       }
     });
   }, []);

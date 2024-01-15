@@ -12,6 +12,7 @@ export const ContentWrap = styled.div`
   bottom: 0;
   width: 100%;
   height: 100%;
+  padding-left: var(--global-padding);
 `;
 
 export const ContentInner = styled.div`
@@ -19,6 +20,10 @@ export const ContentInner = styled.div`
   width: 100%;
   margin: 0 auto;
   margin-top: 52px;
+
+  @media (max-width: 840px) {
+    display: none;
+  }
 `;
 
 export const Inner = styled.div`

@@ -24,7 +24,7 @@ const Fab = () => {
   };
 
   const fabPosition = {
-    right: positionX + GLOBAL_PADDING,
+    right: positionX,
   };
 
   return (
