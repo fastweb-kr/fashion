@@ -4,7 +4,6 @@ import { useGetDistanceToRight } from '../../../../hooks';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../redux/config/configStore';
 
-const GLOBAL_PADDING = 16;
 const HidePageList = ['login', 'write', 'style', 'community', 'rank', 'match', 'signup', 'mypage'];
 
 const Fab = () => {
