@@ -4,12 +4,14 @@ import { useGetDistanceToRight } from '../../../../hooks';
 import { useSelector } from 'react-redux';
 import { RootState } from '../../../../redux/config/configStore';
 
+const GLOBAL_PADDING = 16;
 const HidePageList = ['login', 'write', 'style', 'community', 'rank', 'match', 'signup', 'mypage'];
 
 const Fab = () => {
   const navigate = useNavigate();
   const positionX = useGetDistanceToRight();
   const loginUser = useSelector((state: RootState) => state.user);
+  const isMobile = window.innerWidth <= 840;
 
   const handleWrite = () => {
     navigate('/write?category=style');
@@ -23,7 +25,7 @@ const Fab = () => {
   };
 
   const fabPosition = {
-    right: positionX,
+    right: isMobile ? positionX + GLOBAL_PADDING : positionX,
   };
 
   return (
