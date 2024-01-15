@@ -6,9 +6,18 @@ import { auth } from './firebase';
 import { useDispatch } from 'react-redux';
 import { setUser } from './redux/modules';
 import { getUsers } from './api';
+import { UserType } from './@types';
 
 function App() {
   const dispatch = useDispatch();
+
+  const initialUser: UserType = {
+    id: '',
+    name: '',
+    height: '',
+    weight: '',
+    profileImg: '',
+  };
 
   const fetchLoginUser = async (id: string | null) => {
     try {
@@ -27,7 +36,12 @@ function App() {
 
   useEffect(() => {
     onAuthStateChanged(auth, (user) => {
-      if (user) fetchLoginUser(user.email);
+      if (user) {
+        fetchLoginUser(user.email);
+      } else {
+        dispatch(setUser(initialUser));
+        console.log('logout');
+      }
     });
   }, []);
 

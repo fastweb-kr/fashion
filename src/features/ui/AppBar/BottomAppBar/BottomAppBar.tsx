@@ -23,7 +23,7 @@ const BottomAppBar = () => {
     { id: uuid(), to: '/community', iconSrc: '/img/ico_community.svg', ActiveIconSrc: '/img/ico_community_pressed.svg', label: '커뮤니티' },
     { id: uuid(), to: '/match', iconSrc: '/img/ico_match.svg', ActiveIconSrc: '/img/ico_match_pressed.svg', label: '픽서매칭' },
     { id: uuid(), to: '/rank', iconSrc: '/img/ico_rank.svg', ActiveIconSrc: '/img/ico_rank_pressed.svg', label: '랭킹' },
-    { id: uuid(), to: '/login', iconSrc: '/img/ico_user.svg', ActiveIconSrc: '/img/ico_user.svg', label: '로그인' },
+    { id: uuid(), to: '/login', iconSrc: '/img/ico_user.svg', ActiveIconSrc: '/img/ico_user_fill.svg', label: '로그인' },
   ];
 
   const loginTabs: Tabs[] = [
@@ -31,13 +31,19 @@ const BottomAppBar = () => {
     { id: uuid(), to: '/community', iconSrc: '/img/ico_community.svg', ActiveIconSrc: '/img/ico_community_pressed.svg', label: '커뮤니티' },
     { id: uuid(), to: '/match', iconSrc: '/img/ico_match.svg', ActiveIconSrc: '/img/ico_match_pressed.svg', label: '픽서매칭' },
     { id: uuid(), to: '/rank', iconSrc: '/img/ico_rank.svg', ActiveIconSrc: '/img/ico_rank_pressed.svg', label: '랭킹' },
-    { id: uuid(), to: '/mypage', iconSrc: '/img/ico_user.svg', ActiveIconSrc: '/img/ico_user.svg', label: '마이페이지' },
+    { id: uuid(), to: `/mypage/${loginUser.name}`, iconSrc: '/img/ico_user.svg', ActiveIconSrc: '/img/ico_user_fill.svg', label: '마이페이지' },
   ];
 
   const [renderTabs, setRenderTabs] = useState(tabs);
 
   const isActive = (urlPath: string) => {
-    return urlPath === path ? true : false;
+    const splitPath = location.pathname.split('/');
+
+    if (splitPath[1] === 'mypage' && urlPath.includes('mypage')) {
+      return true;
+    } else {
+      return urlPath === path;
+    }
   };
 
   const [isBottomAppBarHide, setIsBottomAppBarHide] = useState(false);
@@ -55,7 +61,7 @@ const BottomAppBar = () => {
   };
 
   useEffect(() => {
-    setRenderTabs(loginUser ? loginTabs : tabs);
+    setRenderTabs(loginUser.id ? loginTabs : tabs);
   }, [loginUser]);
 
   useEffect(() => {

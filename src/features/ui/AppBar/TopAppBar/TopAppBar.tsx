@@ -159,7 +159,7 @@ const TopAppBar = () => {
                   ''
                 )}
 
-                {loginUser && !isWritePage ? (
+                {loginUser.id && !isWritePage ? (
                   <S.MenusWrap>
                     <button onClick={toggleActive}>
                       <S.Icon src="/img/ico_more.svg" alt="more" />

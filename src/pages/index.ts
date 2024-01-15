@@ -10,3 +10,4 @@ export { default as Suggest } from './Community/Suggest/Suggest';
 export { default as StyleWrite } from './Style/StyleWrite/StyleWrite';
 export { default as StyleDetail } from './Style/StyleDetail/StyleDetail';
 export { default as SignUp } from './Account/SignUp/SignUp';
+export { default as Mypage } from './Account/Mypage/Mypage';

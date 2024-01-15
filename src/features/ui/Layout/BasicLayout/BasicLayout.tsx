@@ -9,10 +9,12 @@ const BasicLayout = () => {
     <S.Container>
       <S.ContentWrap>
         <S.ContentInner>
-          <S.Logo>PickStyle</S.Logo>
+          <S.Logo>
+            <img src="/img/logo-wh.svg" />
+          </S.Logo>
           <div>
             <S.Title>
-              패션 공유 플랫폼
+              <S.fw500>패션 공유 플랫폼</S.fw500>
               <br />
               픽스타일
             </S.Title>

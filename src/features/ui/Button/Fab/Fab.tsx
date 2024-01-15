@@ -5,7 +5,7 @@ import { useSelector } from 'react-redux';
 import { RootState } from '../../../../redux/config/configStore';
 
 const GLOBAL_PADDING = 16;
-const HidePageList = ['login', 'write', 'style', 'community', 'rank', 'match', 'signup'];
+const HidePageList = ['login', 'write', 'style', 'community', 'rank', 'match', 'signup', 'mypage'];
 
 const Fab = () => {
   const navigate = useNavigate();
@@ -29,7 +29,7 @@ const Fab = () => {
 
   return (
     <>
-      {loginUser ? (
+      {loginUser.id ? (
         <S.Container>
           <S.Button onClick={handleWrite} style={fabPosition} className={ishidePage() ? 'hidden' : ''}>
             +

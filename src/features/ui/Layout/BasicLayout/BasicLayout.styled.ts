@@ -73,3 +73,7 @@ export const BadgeArrow = styled.span`
   margin-left: -3px;
   transform: rotate(90deg) translateX(-50%);
 `;
+
+export const fw500 = styled.span`
+  font-weight: 500;
+`;
